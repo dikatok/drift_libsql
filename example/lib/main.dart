@@ -10,20 +10,20 @@ import 'package:provider/provider.dart';
 const url = String.fromEnvironment("TURSO_URL");
 const token = String.fromEnvironment("TURSO_TOKEN");
 
-late AppDatabase memoryClient;
-late AppDatabase localClient;
-late AppDatabase remoteClient;
-late AppDatabase replicaClient;
+late AppDatabase memoryDatabase;
+late AppDatabase localDatabase;
+late AppDatabase remoteDatabase;
+late AppDatabase replicaDatabase;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final dir = await getApplicationCacheDirectory();
 
-  memoryClient = AppDatabase(DriftLibsqlDatabase(":memory:"));
-  localClient = AppDatabase(DriftLibsqlDatabase("${dir.path}/local.db"));
-  remoteClient = AppDatabase(DriftLibsqlDatabase(url, authToken: token));
-  replicaClient = AppDatabase(DriftLibsqlDatabase(
+  memoryDatabase = AppDatabase(DriftLibsqlDatabase(":memory:"));
+  localDatabase = AppDatabase(DriftLibsqlDatabase("${dir.path}/local.db"));
+  remoteDatabase = AppDatabase(DriftLibsqlDatabase(url, authToken: token));
+  replicaDatabase = AppDatabase(DriftLibsqlDatabase(
     "${dir.path}/replica.db",
     syncUrl: url,
     authToken: token,
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => Provider<TaskRepository>(
                             create: (context) =>
-                                LibsqlTaskRepository(memoryClient),
+                                LibsqlTaskRepository(memoryDatabase),
                             child: const TaskList(),
                           ),
                         ),
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => Provider<TaskRepository>(
                             create: (context) =>
-                                LibsqlTaskRepository(localClient),
+                                LibsqlTaskRepository(localDatabase),
                             child: const TaskList(),
                           ),
                         ),
@@ -84,7 +84,7 @@ class MyApp extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => Provider<TaskRepository>(
                             create: (context) =>
-                                LibsqlTaskRepository(remoteClient),
+                                LibsqlTaskRepository(remoteDatabase),
                             child: const TaskList(),
                           ),
                         ),
@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => Provider<TaskRepository>(
                             create: (context) =>
-                                LibsqlTaskRepository(replicaClient),
+                                LibsqlTaskRepository(replicaDatabase),
                             child: const TaskList(),
                           ),
                         ),

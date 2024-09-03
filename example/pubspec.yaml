@@ -16,12 +16,8 @@ dependencies:
   flutter_bloc: ^8.1.6
   provider: ^6.1.2
   path_provider: ^2.1.4
-  watcher: ^1.1.0
   drift: ^2.20.0
   drift_flutter: ^0.2.0
-
-dependency_overrides:
-  web: ^1.0.0
 
 dev_dependencies:
   flutter_test:

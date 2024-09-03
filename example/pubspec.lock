@@ -302,10 +302,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_rust_bridge
-      sha256: "7beb9cb4690916a6c4fd151d91dba53555ea258dbc029dd5f1bfba2e7bd32b86"
+      sha256: b0271cc147d5afccf9774809e4eef52b7357babe1a1a31db649df6f02dd27580
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.3.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -411,10 +411,10 @@ packages:
     dependency: transitive
     description:
       name: libsql_dart
-      sha256: ba1315ef674cb013b91caae6283ce62b787baa5e35704abe0e4fca79547da18b
+      sha256: d463b493ce0bca3519c78bc7ef863405a941ebd5a59e351ddca668cefd275e43
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.4"
+    version: "0.4.5"
   lints:
     dependency: transitive
     description:
@@ -741,7 +741,7 @@ packages:
     source: hosted
     version: "14.2.4"
   watcher:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: watcher
       sha256: "3d2ad6751b3c16cf07c7fca317a1413b3f26530319181b37e3b9039b84fc01d8"
@@ -749,7 +749,7 @@ packages:
     source: hosted
     version: "1.1.0"
   web:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: web
       sha256: d43c1d6b787bf0afad444700ae7f4db8827f701bc61c255ac8d328c6f4d52062
