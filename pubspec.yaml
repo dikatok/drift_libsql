@@ -11,10 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   drift: ^2.20.0
-  libsql_dart: ^0.4.4
-
-dependency_overrides:
-  web: ^1.0.0
+  libsql_dart: ^0.4.5
 
 dev_dependencies:
   flutter_test:
