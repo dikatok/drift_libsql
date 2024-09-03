@@ -1,6 +1,6 @@
 name: drift_libsql
 description: "Turso/Libsql database client binding for Drift"
-version: 0.0.1
+version: 0.0.2
 homepage:
 repository: https://github.com/dikatok/drift_libsql
 issue_tracker: https://github.com/dikatok/drift_libsql/issues
