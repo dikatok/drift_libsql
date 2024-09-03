@@ -1,0 +1,24 @@
+name: drift_libsql
+description: "Libsql database client binding for Drift"
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ^3.5.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  drift: ^2.20.0
+  libsql_dart: ^0.4.4
+
+dependency_overrides:
+  web: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
