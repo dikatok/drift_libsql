@@ -5,17 +5,17 @@ import 'dart:async';
 import 'package:drift/backends.dart';
 import 'package:libsql_dart/libsql_dart.dart';
 
-final class LibsqlDatabase extends DelegatedDatabase {
-  LibsqlDatabase._(super.delegate);
+final class DriftLibsqlDatabase extends DelegatedDatabase {
+  DriftLibsqlDatabase._(super.delegate);
 
-  LibsqlDatabase(
+  DriftLibsqlDatabase(
     String url, {
     String? authToken,
     String? syncUrl,
     int? syncIntervalSeconds,
     String? encryptionKey,
     bool? readYourWrites,
-  }) : this._(_HranaDelegate(LibsqlClient(
+  }) : this._(_LibsqlDelegate(LibsqlClient(
           url,
           authToken: authToken,
           syncUrl: syncUrl,
@@ -25,12 +25,12 @@ final class LibsqlDatabase extends DelegatedDatabase {
         )));
 }
 
-final class _HranaDelegate extends DatabaseDelegate {
+final class _LibsqlDelegate extends DatabaseDelegate {
   final LibsqlClient _client;
 
   bool _open = false;
 
-  _HranaDelegate(this._client);
+  _LibsqlDelegate(this._client);
 
   @override
   Future<void> runCustom(String statement, List<Object?> args) async {
@@ -68,13 +68,13 @@ final class _HranaDelegate extends DatabaseDelegate {
 
   @override
   DbVersionDelegate get versionDelegate =>
-      _HranaVersionDelegate(delegate: this);
+      _LibsqlVersionDelegate(delegate: this);
 }
 
-final class _HranaVersionDelegate extends DynamicVersionDelegate {
-  final _HranaDelegate delegate;
+final class _LibsqlVersionDelegate extends DynamicVersionDelegate {
+  final _LibsqlDelegate delegate;
 
-  _HranaVersionDelegate({required this.delegate});
+  _LibsqlVersionDelegate({required this.delegate});
 
   @override
   Future<int> get schemaVersion async {
