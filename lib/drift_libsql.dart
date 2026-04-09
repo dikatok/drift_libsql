@@ -60,8 +60,7 @@ final class _LibsqlDelegate extends DatabaseDelegate {
 
   @override
   Future<int> runInsert(String statement, List<Object?> args) async {
-    final _ = await _client.query(statement, positional: args);
-    return 0;
+    return _client.execute(statement, positional: args);
   }
 
   @override
